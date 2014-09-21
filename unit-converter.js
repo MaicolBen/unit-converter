@@ -10,131 +10,103 @@ var converters = [ {
     name: 'Mass',
     factors: [{
         id : 'kg',
-        label: 'Kilograms (kg)',
-        conversion_value: 1
+        name: 'Kilograms (kg)',
+        conValue: 1
     }, {
         id : 'g',
-        label: 'Grams (g)',
-        conversion_value: 1000
+        name: 'Grams (g)',
+        conValue: 1000
     }, {
         id : 'oz',
-        label: 'Ounces (oz)',
-        conversion_value: 35.2739619
+        name: 'Ounces (oz)',
+        conValue: 35.273962
     }, {
         id : 'lb',
-        label: 'Pounds (lb)',
-        conversion_value: 2.20462262
+        name: 'Pounds (lb)',
+        conValue: 2.2046227
     }, ]
 }, {
     id: CONV_AREA,
     name: 'Area',
     factors: [{
         id : 'm2',
-        label: 'Square meter (m^2)',
-        conversion_value: 1
+        name: 'Square meter (m^2)',
+        conValue: 1
     }, {
         id : 'ft2',
-        label: 'Square foot (ft^2)',
-        conversion_value: 10.76391
+        name: 'Square foot (ft^2)',
+        conValue: 10.7639
     }, ]
 }, {
     id: CONV_SPEED,
     name: 'Speed',
     factors: [{
         id : 'kmh',
-        label: 'Kilometers per hour (km/h)',
-        conversion_value: 1
+        name: 'Km per hour (km/h)',
+        conValue: 1
     }, {
         id : 'mph',
-        label: 'Miles per hour (mph)',
-        conversion_value: 0.621371
+        name: 'Miles per hour (mph)',
+        conValue: 0.621371
     }, ]
 }, {
     id: CONV_LENGTH,
     name: 'Length',
     factors: [{
         id : 'm',
-        label: 'Meters (m)',
-        conversion_value: 1
+        name: 'Meters (m)',
+        conValue: 1
     }, {
         id : 'cm',
-        label: 'Centimeters (cm)',
-        conversion_value: 100
-    }, {
-        id : 'ft',
-        label: 'Feet (ft)',
-        conversion_value: 3.2808399
-    }, {
-        id : 'in',
-        label: 'Inches (in)',
-        conversion_value: 39.37
+        name: 'Centimeters (cm)',
+        conValue: 100
     }, {
         id : 'yd',
-        label: 'Yards (yd)',
-        conversion_value: 1.0936133
+        name: 'Yards (yd)',
+        conValue: 1.0936133
+    }, {
+        id : 'ft',
+        name: 'Feet (ft)',
+        conValue: 3.2808399
+    }, {
+        id : 'in',
+        name: 'Inches (in)',
+        conValue: 39.37
     }, {
         id : 'mi',
-        label: 'Land miles (mi)',
-        conversion_value: 0.000621371192
+        name: 'Land miles (mi)',
+        conValue: 0.00062137119
     }, ]
 }, {
     id: CONV_VOLUME,
     name: 'Volume',
     factors: [{
         id : 'l',
-        label: 'Liters (l)',
-        conversion_value: 1
-    }, {
-        id : 'm3',
-        label: 'Cubic meters (m^3)',
-        conversion_value: 0.001
-    }, {
-        id : 'ft3',
-        label: 'Cubic feet (ft^3)',
-        conversion_value: 0.035315
+        name: 'Liters (l)',
+        conValue: 1
     }, {
         id : 'usgal',
-        label: 'US Gallons (gal)',
-        conversion_value: 0.264172052
+        name: 'US Gallons (gal)',
+        conValue: 0.26417205
     }, {
-        id : 'floz',
-        label: 'US Fluid ounces (fl oz)',
-        conversion_value: 33.8140227
+        id : 'm3',
+        name: 'Cubic meters (m^3)',
+        conValue: 0.001
     }, {
-        id : 'usq',
-        label: 'US Quarts',
-        conversion_value: 1.05668821
-    }, {
-        id : 'usp',
-        label: 'US Pints (pt)',
-        conversion_value: 2.11337642
-    }, {
-        id : ukq'',
-        label: 'UK Quarts',
-        conversion_value: 0.87987663
-    }, {
-        id : 'uspt',
-        label: 'UK Pints (pt)',
-        conversion_value: 1.75975326
-    }, {
-        id : 'ukgal',
-        label: 'UK Gallons (gal)',
-        conversion_value: 0.219969157
-    }, {
-        id : 'ukfloz',
-        label: 'UK Fluid ounces (fl oz)',
-        conversion_value: 35.195009
-    }, ]
+        id : 'ft3',
+        name: 'Cubic feet (ft^3)',
+        conValue: 0.03532
+    } ]
 } ];
 
-function convert(type, factor_from, factor_to, value){
+function convert(type, factorFrom, factorTo, value){
     var converter = getConverter(type);
-    var factor_from = getFactor(converter,factor_from);
-    var factor_to = getFactor(converter,factor_to);
-    if (factor_from.conversion_value == 1)
-        return  value / factor_to.conversion_value
+    var factorFrom = getFactor(converter,factorFrom);
+    var factorTo = getFactor(converter,factorTo);
+    if (factorFrom.conValue == 1)
+        return  value / factorTo.conValue
     else {
-        return  (value * factor_from.conversion_value) / factor_to.conversion_value
+        return  (value * factorFrom.conValue) / factorTo.conValue
     }
 }
 
@@ -144,14 +116,14 @@ function getConverter(type){
             return converters[i];
         }
     };
-    throw new Error("Doesn't Exist type of convert");
+    throw new Error("Doesn't exist type of convert");
 }
 
-function getFactor(converter, factor_id){
+function getFactor(converter, factorId){
     for (var i = converter.factors.length - 1; i >= 0; i--) {
-        if(converter.factors[i].id === factor_id){
+        if(converter.factors[i].id === factorId){
             return converter.factors[i];
         }
     };
-    throw new Error("Doesn't Exist type of factor in convert type");
+    throw new Error("Doesn't exist type of factor in convert type");
 }
