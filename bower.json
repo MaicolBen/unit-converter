@@ -1,0 +1,26 @@
+{
+  "name": "unit-converter-js",
+  "main": "unit-converter.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/MaicolBen/unit-converter",
+  "authors": [
+    "MaicolBen <maicol.bentancor@gmail.com>"
+  ],
+  "description": "Unit converter in Javascript",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "unit",
+    "converter",
+    "measure"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

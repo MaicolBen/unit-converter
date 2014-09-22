@@ -103,10 +103,10 @@ function convert(type, factorFrom, factorTo, value){
     var converter = getConverter(type);
     var factorFrom = getFactor(converter,factorFrom);
     var factorTo = getFactor(converter,factorTo);
-    if (factorFrom.conValue == 1)
-        return  value / factorTo.conValue
+    if (factorTo.conValue == 1)
+        return  value / factorFrom.conValue;
     else {
-        return  (value * factorFrom.conValue) / factorTo.conValue
+        return  (value * factorTo.conValue) / factorFrom.conValue;
     }
 }
 
