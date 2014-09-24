@@ -101,8 +101,8 @@ var converters = [ {
 
 function convert(type, factorFrom, factorTo, value){
     var converter = getConverter(type);
-    var factorFrom = getFactor(converter,factorFrom);
-    var factorTo = getFactor(converter,factorTo);
+    var factorFrom = getFactor(converter, factorFrom);
+    var factorTo = getFactor(converter, factorTo);
     if (factorTo.conValue == 1)
         return  value / factorFrom.conValue;
     else {
